@@ -9846,18 +9846,20 @@
 0x4009403C C   FIELD 25w01 PHY_ACCESS (rw): Software writes this bit to one to start a read or write operation.
 0x4009403C C   FIELD 31w01 PHY_MODE (rw): This bit indicates if the interface between the controller is UTMI+ or ULPI.
 0x40095000 A PERIPHERAL CRC_ENGINE
-0x40095000 B  REGISTER MODE (rw): CRC mode register
-0x40095000 C   FIELD 00w02 CRC_POLY (rw): CRC polynomial: 1X = CRC-32 polynomial 01 = CRC-16 polynomial 00 = CRC-CCITT polynomial
-0x40095000 C   FIELD 02w01 BIT_RVS_WR (rw): Data bit order: 1 = Bit order reverse for CRC_WR_DATA (per byte) 0 = No bit order reverse for CRC_WR_DATA (per byte)
-0x40095000 C   FIELD 03w01 CMPL_WR (rw): Data complement: 1 = 1's complement for CRC_WR_DATA 0 = No 1's complement for CRC_WR_DATA
-0x40095000 C   FIELD 04w01 BIT_RVS_SUM (rw): CRC sum bit order: 1 = Bit order reverse for CRC_SUM 0 = No bit order reverse for CRC_SUM
-0x40095000 C   FIELD 05w01 CMPL_SUM (rw): CRC sum complement: 1 = 1's complement for CRC_SUM 0 = No 1's complement for CRC_SUM
-0x40095004 B  REGISTER SEED (rw): CRC seed register
-0x40095004 C   FIELD 00w32 CRC_SEED (rw): A write access to this register will load CRC seed value to CRC_SUM register with selected bit order and 1's complement pre-processes. A write access to this register will overrule the CRC calculation in progresses.
-0x40095008 B  REGISTER SUM (ro): CRC checksum register
-0x40095008 B  REGISTER WR_DATA (wo): CRC data register
+0x40095000 B  REGISTER MODE (rw): CRC mode
+0x40095000 C   FIELD 00w02 CRC_POLY: CRC polynomial
+0x40095000 C   FIELD 02w01 BIT_RVS_DATA: Data bit order
+0x40095000 C   FIELD 03w01 CMPL_DATA: Data complement
+0x40095000 C   FIELD 04w01 BIT_RVS_SUM: Sum bit order
+0x40095000 C   FIELD 05w01 CMPL_SUM: Sum complement
+0x40095004 B  REGISTER SEED (rw): CRC seed
+0x40095004 C   FIELD 00w32 CRC_SEED: A write access to this register will load CRC seed value to CRC_SUM register with selected bit order and 1’s complement pre-processes.. Remark: A write access to this register will overrule the CRC calculation in progresses.
+0x40095008 B  REGISTER DATA (wo): Data written to this register will be taken to perform CRC calculation with selected bit order and 1’s complement pre-process. Any write size 8, 16 or 32-bit are allowed and accept back-to-back transactions.
+0x40095008 B  REGISTER SUM (ro): The most recent CRC sum can be read through this register with selected bit order and 1’s complement post-processes.
+0x40095008 C   FIELD 00w08 DATA8: 8 bit access
+0x40095008 C   FIELD 00w16 DATA16: 16 bit access
 0x40095008 C   FIELD 00w32 CRC_SUM (ro): The most recent CRC sum can be read through this register with selected bit order and 1's complement post-processes.
-0x40095008 C   FIELD 00w32 CRC_WR_DATA (wo): Data written to this register will be taken to perform CRC calculation with selected bit order and 1's complement pre-process. Any write size 8, 16 or 32-bit are allowed and accept back-to-back transactions.
+0x40095008 C   FIELD 00w32 DATA32: 32 bit access
 0x40096000 A PERIPHERAL FLEXCOMM5
 0x40096000 A PERIPHERAL I2C5
 0x40096000 A PERIPHERAL SPI5
