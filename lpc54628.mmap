@@ -9855,11 +9855,15 @@
 0x40095004 B  REGISTER SEED (rw): CRC seed
 0x40095004 C   FIELD 00w32 CRC_SEED: A write access to this register will load CRC seed value to CRC_SUM register with selected bit order and 1’s complement pre-processes.. Remark: A write access to this register will overrule the CRC calculation in progresses.
 0x40095008 B  REGISTER DATA (wo): Data written to this register will be taken to perform CRC calculation with selected bit order and 1’s complement pre-process. Any write size 8, 16 or 32-bit are allowed and accept back-to-back transactions.
+0x40095008 B  REGISTER DATA16 (wo): Data register - half-word sized
+0x40095008 B  REGISTER DATA32 (wo): Data register - word sized
+0x40095008 B  REGISTER DATA8 (wo): Data register - byte sized
 0x40095008 B  REGISTER SUM (ro): The most recent CRC sum can be read through this register with selected bit order and 1’s complement post-processes.
-0x40095008 C   FIELD 00w08 DATA8: 8 bit access
-0x40095008 C   FIELD 00w16 DATA16: 16 bit access
+0x40095008 C   FIELD 00w08 DATA8: Data register bits
+0x40095008 C   FIELD 00w16 DATA16: Data register bits
 0x40095008 C   FIELD 00w32 CRC_SUM (ro): The most recent CRC sum can be read through this register with selected bit order and 1's complement post-processes.
-0x40095008 C   FIELD 00w32 DATA32: 32 bit access
+0x40095008 C   FIELD 00w32 CRC_WR_DATA (wo): Data written to this register will be taken to perform CRC calculation with selected bit order and 1's complement pre-process. Any write size 8, 16 or 32-bit are allowed and accept back-to-back transactions.
+0x40095008 C   FIELD 00w32 DATA32: Data register bits
 0x40096000 A PERIPHERAL FLEXCOMM5
 0x40096000 A PERIPHERAL I2C5
 0x40096000 A PERIPHERAL SPI5
